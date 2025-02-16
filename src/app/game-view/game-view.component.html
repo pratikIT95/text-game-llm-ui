@@ -1,4 +1,9 @@
 <div class="story-container">
+  @if (isLoading) {
+    <div class="overlay">
+      <mat-spinner class="spinner" ></mat-spinner>
+    </div>
+  }
   @if (storyResponse) {
     <mat-card class="story-card">
       <mat-card-content>
@@ -15,7 +20,6 @@
   }
   @if (!isStoryStarted && !isStoryEnded) {
     <button mat-raised-button color="accent" class="action-button" (click)="startGame()">
-      <mat-icon>play_arrow</mat-icon>
       Start Game
     </button>
   }

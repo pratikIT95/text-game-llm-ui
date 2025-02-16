@@ -4,10 +4,11 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import {MatChipsModule} from '@angular/material/chips';
 import { StoryService } from '../story.service';
 import {MatIconModule} from '@angular/material/icon';
+import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
 
 @Component({
   selector: 'app-game-view',
-  imports: [MatCardModule,MatChipsModule,MatProgressBarModule,MatCardModule,MatIconModule],
+  imports: [MatCardModule,MatChipsModule,MatProgressBarModule,MatCardModule,MatIconModule,MatProgressSpinnerModule],
   templateUrl: './game-view.component.html',
   styleUrl: './game-view.component.scss',
   providers: [StoryService],
@@ -18,19 +19,24 @@ export class GameViewComponent {
   choices: string[] = [];
   isStoryStarted: boolean = false;
   isStoryEnded: boolean = false;
+  isLoading : boolean = false;
 
   constructor(private storyService: StoryService) { }
 
   startGame() {
+    this.isLoading = true;
     this.storyService.startGame(this.userId).subscribe(response => {
       this.isStoryStarted = true;
       this.storyResponse = response;
       this.choices = response.choices; // Assuming the response has a 'choices' field
       this.isStoryEnded = response.isEnding;
+      this.isLoading = false;
     });
+    
   }
 
   makeChoice(choice: string) {
+    this.isLoading = true;
     this.storyService.continueGame(this.userId, choice).subscribe(response => {
       this.storyResponse = response;
       this.choices = response.choices;
@@ -39,6 +45,7 @@ export class GameViewComponent {
         this.choices = []; // Clear choices if the story has ended
       }
       this.isStoryEnded = response.isEnding;
+      this.isLoading = false;
     });
   }
 }
