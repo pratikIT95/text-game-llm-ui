@@ -1,0 +1,84 @@
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Raleway:wght@400;700&display=swap');
+
+.story-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(135deg, #673ab7, #ff4081); /* Gradient background */
+  padding: 20px;
+  font-family: 'Playfair Display', serif;
+}
+
+.story-card {
+  max-width: 600px;
+  width: 100%;
+  margin-bottom: 20px;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  border-radius: 8px;
+  padding: 24px; /* Increased padding for better spacing */
+  backdrop-filter: blur(8px); /* Adds a blur effect for a frosted glass look */
+}
+
+.story-text {
+  font-size: 18px;
+  line-height: 1.8; /* Increased line height for better readability */
+  color: #222222; /* Darker text for better contrast */
+  font-weight: 400;
+}
+
+.choices-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  max-width: 600px;
+}
+
+.choice-button {
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px;
+  text-align: center;
+  background-color: rgba(255, 255, 255, 0.9); /* Semi-transparent white */
+  color: #673ab7; /* Primary color for text */
+  border: 2px solid #673ab7; /* Border color to match the theme */
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background-color 0.3s, color 0.3s;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(8px); /* Adds a blur effect for a frosted glass look */
+}
+
+.choice-button:hover {
+  background-color: #673ab7; /* Primary color on hover */
+  color: #ffffff; /* White text on hover */
+}
+
+.action-button {
+  font-size: 18px;
+  padding: 12px 30px;
+  margin-top: 20px;
+  background-color: rgba(255, 64, 129, 0.9); /* Semi-transparent accent color */
+  color: #ffffff; /* White text */
+  border: none;
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1); /* Subtle shadow */
+  transition: background-color 0.3s;
+  width: 100%;
+  max-width: 600px;
+  cursor: pointer;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.5px;
+  backdrop-filter: blur(8px); /* Adds a blur effect for a frosted glass look */
+}
+
+.action-button:hover {
+  background-color: rgba(233, 30, 99, 0.9); /* Darker semi-transparent accent color on hover */
+}

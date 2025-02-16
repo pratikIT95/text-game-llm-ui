@@ -1,0 +1,28 @@
+<div class="story-container">
+  @if (storyResponse) {
+    <mat-card class="story-card">
+      <mat-card-content>
+        <p class="story-text">{{ storyResponse.storyText }}</p>
+      </mat-card-content>
+    </mat-card>
+    <div class="choices-container">
+      @for (choice of choices; track choice) {
+        <button mat-raised-button color="primary" class="choice-button" (click)="makeChoice(choice)">
+          {{ choice }}
+        </button>
+      }
+    </div>
+  }
+  @if (!isStoryStarted && !isStoryEnded) {
+    <button mat-raised-button color="accent" class="action-button" (click)="startGame()">
+      <mat-icon>play_arrow</mat-icon>
+      Start Game
+    </button>
+  }
+  @if (isStoryEnded) {
+    <button mat-raised-button color="accent" class="action-button" (click)="startGame()">
+      <i class="fa-solid fa-rotate-right"></i>
+      Restart Game
+    </button>
+  }
+</div>
