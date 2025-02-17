@@ -15,6 +15,7 @@ export class AppComponent implements OnInit,OnDestroy {
   }
   ngOnInit(): void {
     sessionStorage.setItem('sessionUuid', uuid.v4());
+    console.log(sessionStorage.getItem('sessionUuid'));
   }
   title = 'text-game-ui';
 }

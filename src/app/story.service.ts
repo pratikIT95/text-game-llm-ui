@@ -8,17 +8,18 @@ import { Observable } from 'rxjs';
 export class StoryService {
 
   private baseUrl = 'http://localhost:8080'; // Replace with your backend URL
-  private sessionUuid;;
+  private sessionUuid : string = '';
 
   constructor(private http: HttpClient) {
-    this.sessionUuid = sessionStorage.getItem('sessionUuid');
    }
 
   startGame(): Observable<any> {
-    return this.http.post(`${this.baseUrl}/start/${this.sessionUuid}`, {});
+    console.log("Current session ID for start",sessionStorage.getItem('sessionUuid'));
+    return this.http.post(`${this.baseUrl}/start/${sessionStorage.getItem('sessionUuid')}`, {});
   }
 
   continueGame(prompt: string): Observable<any> {
-    return this.http.post(`${this.baseUrl}/prompt/${this.sessionUuid}`, prompt, { headers: { 'Content-Type': 'text/xml' } });
+    console.log("Current session ID for continue",sessionStorage.getItem('sessionUuid'));
+    return this.http.post(`${this.baseUrl}/prompt/${sessionStorage.getItem('sessionUuid')}`, prompt, { headers: { 'Content-Type': 'text/xml' } });
   }
 }
