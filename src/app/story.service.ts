@@ -14,12 +14,10 @@ export class StoryService {
    }
 
   startGame(): Observable<any> {
-    console.log("Current session ID for start",sessionStorage.getItem('sessionUuid'));
     return this.http.post(`${this.baseUrl}/start/${sessionStorage.getItem('sessionUuid')}`, {});
   }
 
   continueGame(prompt: string): Observable<any> {
-    console.log("Current session ID for continue",sessionStorage.getItem('sessionUuid'));
     return this.http.post(`${this.baseUrl}/prompt/${sessionStorage.getItem('sessionUuid')}`, prompt, { headers: { 'Content-Type': 'text/xml' } });
   }
 }
