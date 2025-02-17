@@ -5,6 +5,7 @@ import {MatChipsModule} from '@angular/material/chips';
 import { StoryService } from '../story.service';
 import {MatIconModule} from '@angular/material/icon';
 import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
+import * as uuid from 'uuid';
 
 @Component({
   selector: 'app-game-view',
@@ -14,18 +15,18 @@ import {MatProgressSpinnerModule} from '@angular/material/progress-spinner';
   providers: [StoryService],
 })
 export class GameViewComponent {
-  userId: string = 'user123'; // Replace with actual user ID or get it dynamically
   storyResponse: any;
   choices: string[] = [];
   isStoryStarted: boolean = false;
   isStoryEnded: boolean = false;
   isLoading : boolean = false;
+  sessionUuid : string = '';
 
   constructor(private storyService: StoryService) { }
 
   startGame() {
     this.isLoading = true;
-    this.storyService.startGame(this.userId).subscribe(response => {
+    this.storyService.startGame().subscribe(response => {
       this.isStoryStarted = true;
       this.storyResponse = response;
       this.choices = response.choices; // Assuming the response has a 'choices' field
@@ -37,7 +38,7 @@ export class GameViewComponent {
 
   makeChoice(choice: string) {
     this.isLoading = true;
-    this.storyService.continueGame(this.userId, choice).subscribe(response => {
+    this.storyService.continueGame(choice).subscribe(response => {
       this.storyResponse = response;
       this.choices = response.choices;
       this.isStoryStarted = !response.isEnding;
